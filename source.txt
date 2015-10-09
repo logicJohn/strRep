@@ -1,0 +1,66 @@
+
+
+
+function writeArray(txt, pos, itteration, counter)
+{
+	txt[itteration] = pos + counter;
+}
+
+function countRep( txt, pos )
+{
+	var sln = txt.string.length;
+	var x    = txt.string.charAt( pos );
+	var y    = txt.string.charAt( pos1 );
+	if( sln < pos )
+	{
+		return 0;
+	}
+	
+	else if ( x != y)
+	{
+		return 0; // this may need to be 1
+	}
+	
+	else
+	{
+		return 1 + countRep( txt, pos + 1);
+	}
+
+}
+
+function locateRep(txt)
+{
+	var pos = 0;
+	var itteration = 1;
+	var counter = 1;
+	var sln = txt.string.length - 1;
+	var charAtPos = txt.string.charAt(pos);
+	var charAtPos1= txt.string.charAt(pos + 1);
+	
+	while (pos <= sln)
+	{
+		charAtPos = txt.string.charAt(pos);
+		charAtPos1= txt.string.charAt(pos + 1);
+		
+		if( charAtPos == charAtPos1 )
+		{
+			counter = countRep(txt, pos);
+			writeArray(txt, pos, itteration, counter);
+			pos = pos + counter;
+			itteration++;
+			counter = 1;
+		}
+		
+		else
+		{
+			writeArray(txt, pos, itteration, counter);
+			pos = pos + counter;
+			itteration++;
+			counter = 1;
+		}
+		
+	}
+	
+}
+
+
